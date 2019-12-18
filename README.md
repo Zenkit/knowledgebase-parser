@@ -16,8 +16,10 @@
 	- If you want to reuse existing fields as the targets of conversion, set `targetKey` to an exiting field
 		If you want to create a new field, set `targetUuid: uuidv4()` and `targetName`
 
-*Note*
-If you are using a `.json` file for the source data (i.e. set `sourceDataPath`), it expectes the following format:
+*Notes*
+1) Items are requried to have unique names.
+
+2) If you are using a `.json` file for the source data (i.e. set `sourceDataPath`), it expectes the following format:
 ```json
 	{
 		"kanbanData": [

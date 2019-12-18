@@ -4,8 +4,8 @@ const uuidv4 = require('uuidv4').default;
 const promisePool = require('es6-promise-pool');
 
 const config = (function () {
-	// const baseUrl = 'https://zenkit.com/api/v1';
-	const baseUrl = 'http://localhost:9000/api/v1';
+	const baseUrl = 'https://staging.zenkit.com/api/v1';
+	// const baseUrl = 'http://localhost:9000/api/v1';
 
 	// To reuse existing target elements, set 'targetKey' to the corresponding value
 	let mapping = [
@@ -13,7 +13,7 @@ const config = (function () {
 			sourceKey: 'b2444557-36cb-4e1f-8b5c-109e88ce9e0c_text',
 			ecName: 'Textfield',
 			targetName: 'Wiki Content',
-			targetKey: '53a2412b-0446-42e7-bedb-6822b73d68eb_text',
+			// targetKey: '53a2412b-0446-42e7-bedb-6822b73d68eb_text',
 			targetUuid: uuidv4()
 		}, {
 			sourceKey: 'displayString',
@@ -22,7 +22,7 @@ const config = (function () {
 			sourceKey: '11bbb3ed-fee1-451c-82ab-5c2b92a35cb9_text',
 			ecName: 'Textfield',
 			targetName: 'Wiki Content - Draft',
-			targetKey: 'a876bb9f-7072-479c-a0d0-7b4cb1b475c7_text',
+			// targetKey: 'a876bb9f-7072-479c-a0d0-7b4cb1b475c7_text',
 			targetUuid: uuidv4()
 		}, {
 			sourceKey: 'ace42fea-dd18-4d3d-a5ff-8e9e048ff81e_filesData',
@@ -31,13 +31,13 @@ const config = (function () {
 	];
 
 	return {
-		apiToken: 'jt06vco3-MM42g74XPFpZukq1ICLDcy66rRVpKqPa',//'k2andcuv-kYRsC7ESESPYDU4jBN7ZKU01G67TGhVE',
+		apiToken: 'k2andcuv-kYRsC7ESESPYDU4jBN7ZKU01G67TGhVE', //'jt06vco3-MM42g74XPFpZukq1ICLDcy66rRVpKqPa',
 		mapping,
 		baseUrl,
-		targetListShortId: 'Ov4NprRxO',
+		targetListShortId: 'FggA49dVe',
 		maxConcurrency: 5,
 		
-		// Used for local testing
+		// Source data. Important when migrating cloned lists (_filesData cannot be cloned but is required)
 		sourceDataPath: './kanban_data.json', // Set 'sourceDataPath' or 'sourceListShortId' to use a different source-collection
 		// sourceListShortId: 'Ov4NprRxO', // Can be used instead of 'sourceDataPath' -> .json
 		fileBaseUrl: 'https://zenkit.com/api/v1', 
@@ -273,6 +273,8 @@ return require('./zenkitApi')(config)
 											resolve(action());
 										}, 61 * 1000);
 									});
+								} else {
+									console.error(`Error while updating entry ${entryToUpdate.entryShortId}: `, { error, entryToUpdate });
 								}
 							});
 					};	
