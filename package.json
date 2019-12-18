@@ -1,0 +1,15 @@
+{
+  "name": "knowledge-parser",
+  "version": "1.0.0",
+  "description": "Tool for scraping Zenkit Knownledge-Base and converting it to markdown",
+  "main": "index.js",
+  "author": "Gelx",
+  "license": "MIT",
+  "dependencies": {
+    "es6-promise-pool": "^2.5.0",
+    "lodash": "^4.17.15",
+    "rest": "^2.0.0",
+    "to-markdown": "^3.1.1",
+    "uuidv4": "^5.0.1"
+  }
+}
